@@ -28,6 +28,6 @@ http://cdn.hcharts.cn/highcharts/4.0.1/modules/no-data-to-display.js <br>
 http://cdn.hcharts.cn/highstock/2.0.1/highstock.js<br>
 
 
-<p>更多文件详见：http://www.hcharts.cn/open/cdn.php<p>
+<h3>更多文件详见：http://www.hcharts.cn/open/cdn.php</h3>
 
 
