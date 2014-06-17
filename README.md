@@ -16,11 +16,18 @@ http://cdn.hcharts.cn/jquery/jquery-<b>{version}</b>.min.js
 2.0.0 \ 2.0.2<br>
 
 <h3>2.Highcharts</h3>
-http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js
-http://cdn.hcharts.cn/highcharts/4.0.1/highcharts-3d.js
-http://cdn.hcharts.cn/highcharts/4.0.1/modules/exporting.js
-http://cdn.hcharts.cn/highcharts/4.0.1/modules/drilldown.js
-http://cdn.hcharts.cn/highcharts/4.0.1/highcharts-all.js
-http://cdn.hcharts.cn/highcharts/4.0.1/modules/no-data-to-display.js
+http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js <br>
+http://cdn.hcharts.cn/highcharts/4.0.1/highcharts-3d.js <br>
+http://cdn.hcharts.cn/highcharts/4.0.1/modules/exporting.js <br>
+http://cdn.hcharts.cn/highcharts/4.0.1/modules/drilldown.js <br>
+http://cdn.hcharts.cn/highcharts/4.0.1/highcharts-all.js <br>
+http://cdn.hcharts.cn/highcharts/4.0.1/modules/no-data-to-display.js <br>
+
+
+<h3>3.Highstock</h3>
+http://cdn.hcharts.cn/highstock/2.0.1/highstock.js<br>
+
+
+<p>更多文件详见：http://www.hcharts.cn/open/cdn.php<p>
 
 
