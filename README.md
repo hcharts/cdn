@@ -2,7 +2,7 @@
 
 <h3>jQuery</h3>
 <pre>
-  http://cdn.hcharts.cn/jquery/jquery-{version}.min.js
+  http://cdn.hcharts.cn/jquery/jquery-<code>{version}</code>.min.js
 </pre>
 
 <h4>vesion</h4>
