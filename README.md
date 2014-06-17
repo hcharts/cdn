@@ -14,3 +14,13 @@ http://cdn.hcharts.cn/jquery/jquery-<b>{version}</b>.min.js
 1.8.0 \ 1.8.2 \ 1.8.3 <br>
 1.9.0 <br>
 2.0.0 \ 2.0.2<br>
+
+<h3>2.Highcharts</h3>
+http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js
+http://cdn.hcharts.cn/highcharts/4.0.1/highcharts-3d.js
+http://cdn.hcharts.cn/highcharts/4.0.1/modules/exporting.js
+http://cdn.hcharts.cn/highcharts/4.0.1/modules/drilldown.js
+http://cdn.hcharts.cn/highcharts/4.0.1/highcharts-all.js
+http://cdn.hcharts.cn/highcharts/4.0.1/modules/no-data-to-display.js
+
+
