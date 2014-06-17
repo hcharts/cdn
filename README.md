@@ -2,7 +2,7 @@
 
 <h3>1.jQuery</h3>
 <pre>
-http://cdn.hcharts.cn/jquery/jquery-<span color='red'>{version}</span>.min.js
+http://cdn.hcharts.cn/jquery/jquery-<b>{version}</b>.min.js
 </pre>
 
 <h4>vesion</h4>
