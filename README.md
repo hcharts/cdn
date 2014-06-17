@@ -1,8 +1,8 @@
 <h1>Highcharts中文网开放CDN服务</h1>
 
-<h3>jQuery</h3>
+<h3>1.jQuery</h3>
 <pre>
-  http://cdn.hcharts.cn/jquery/jquery-<b>{version}</b>.min.js
+http://cdn.hcharts.cn/jquery/jquery-<span color='red'>{version}</span>.min.js
 </pre>
 
 <h4>vesion</h4>
