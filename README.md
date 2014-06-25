@@ -1,3 +1,5 @@
+
+<a href="http://www.hcharts.cn/open/cdn.php"><img src="http://www.hcharts.cn/images/cdn.png"></a>
 <h1>Highcharts中文网开放CDN服务</h1>
 
 <h2>已有CDN文件列表</h2>
