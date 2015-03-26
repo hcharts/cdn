@@ -1,11 +1,11 @@
 
 
 <h1>Highcharts中文网开放CDN服务</h1>
-<a href="http://www.hcharts.cn/open/cdn.php"><img src="http://www.hcharts.cn/images/cdn.png"></a>
+<a href="http://cdn.hcharts.cn"><img src="http://static.hcharts.cn/images/cdn.png"></a>
 
 <h2>已有CDN文件列表</h2>
 
-<p>我们将现有的cdn文件链接发布在Highcharts中文网上，访问地址：http://www.hcharts.cn/open/cdn.php</p>
+<p>我们将现有的cdn文件链接发布在Highcharts中文网上，访问地址：http://cdn.hcharts.cn</p>
 
 <p>目前已有jQuery、Highcharts4.0.1、Highstock2.0.1的js文件，更多静态文件，欢迎大家踊跃提交<p>
 
