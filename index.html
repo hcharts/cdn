@@ -1,1 +1,224 @@
-<h1>CDN</h1>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>开放CDN服务 | Highcharts中文网</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link href="http://static.hcharts.cn/bootstrap/v3/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    body {background: #ECECEC}
+    header {
+        padding: 2em 0;
+        background: #006CEE;
+        color: #fff;
+        min-width: 650px;
+        
+    }
+    .container {
+        min-width: 650px;
+    }
+    .description {
+        font-size: 20px;
+        margin-left: 20px;
+    }
+    .row {
+        margin: 0 20px;
+    }
+    
+    section {
+        margin: 40px 0;
+    }
+    input[name="cdn"] {
+        width: 500px;
+        border: none;
+        outline: none;
+    }
+
+   .tab-content {
+    padding:20px 30px;
+    background: #fff;
+
+   }
+   h3 {margin:30px 0;}
+    footer {
+        background: #000;
+        color: #fff;
+        min-width: 650px;
+    }
+    footer p {
+        margin: 20px;
+    }
+    </style>
+</head>
+<body>
+<header>
+<div class="container">
+<img src="http://static.hcharts.cn/images/cdn.png" width="344px" height="80px" alt="赞助我们">
+<h1 class="description">Highcharts中文网开放CDN服务 —— 国内首个Highcharts专用CDN服务 </h1>
+</div>
+</header>
+<section>
+<div class="container">
+<div class="row">
+<div class="span10">
+<ul class="nav nav-tabs">
+<li class="active">
+<a href="#highcharts" data-toggle="tab">Highcharts & Highstock</a>
+</li>
+<li><a href="#highcharts-plugins" data-toggle="tab">Highcharts-plugins</a>
+</li>
+<li><a href="#jquery" data-toggle="tab">jQuery</a>
+</li>
+<li><a href="#add" data-toggle="tab">提交新的库</a>
+</li>
+<li><a href="#about" data-toggle="tab">关于</a>
+</li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="highcharts">
+<h3>Highcharts / Highstock 相关CDN文件列表</h3>
+<p>主文件</p>
+<ul>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/highcharts.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/highstock.js">
+</li>
+</ul>
+<p>官方扩展
+</p>
+<ul>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/highcharts-more.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/highcharts-3d.js">
+</li>
+</ul>
+<p>功能模块</p>
+<ul>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/exporting.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/no-data-to-display.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/data.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/funnel.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/heatmap.js">
+</li>
+</ul>
+<p>主题</p>
+<ul>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/dark-blue.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/dark-green.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/dark-unica.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/gray.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/grid.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/grid-light.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/sand-signika.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/themes/skies.js">
+</li>
+</ul>
+<p>适配器</p>
+<ul>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/adapters/standalone-framework.js">
+</li>
+</ul>
+</div>
+<div class="tab-pane" id="highcharts-plugins">
+<h3>Highcharts 插件</h3>
+<p>插件列表</p>
+<ul>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/export-excel.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/grouped-categories.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/draggable-legend.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/crossing-specific-value.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/jquery.highchartTable.js">
+</li>
+</ul>
+</div>
+<div class="tab-pane" id="jquery">
+<h3>jQuery 相关CDN文件</h3>
+<ul>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js">
+</li>
+<li>
+<input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/jquery/jquery-1.8.2.min.js">
+</li>
+</ul>
+</div>
+<div class="tab-pane" id="add">
+<h3>提交新的库</h3>
+<p>Github 开源项目 ： https://github.com/hcharts/cdn</p>
+<p>如何提交新的库 ：</p>
+<ol>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</div>
+<div class="tab-pane" id="about">
+<h3>关于</h3>
+<p>开放CDN服务是由Highcharts中文网提供的国内首个Highcharts专用CDN服务。CDN服务商是阿里云CDN，与其他免费CDN相比，阿里云CDN的稳定性是我们选择并使用它的主要原因。</p>
+<p><b>开放CDN维护者：</b></p>
+<ul>
+<li><a href="http://www.52wulian.cn" target="_blank">John Doe</a></li>
+<li></li>
+</ul>
+<p><b>关注我们</b></p>
+<ul>
+<li>新浪微博：<a href="http://weibo.com/highcharts" target="_blank">http://weibo.com/highcharts</a></li>
+</ul>
+<p><b>赞助我们</b></p>
+<p>开放CDN由个人维护，并且CDN资源是收费的，我们希望大家能尽自己的一份力量，赞助我们一定的金钱，让我们能够继续提供更优质的服务。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<p>&copy; 2015 HCharts.cn</p>
+</div>
+</footer>
+<script src="http://static.hcharts.cn/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://static.hcharts.cn/bootstrap/v3/js/bootstrap.min.js"></script>
+</body>
+</html>
