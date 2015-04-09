@@ -1,17 +1,16 @@
 /**
- * Grouped Categories v1.0.3 (2014-03-14)
+ * Grouped Categories v0.0.1 (2013-02-22)
  *
  * (c) 2012-2013 Black Label
  *
  * License: Creative Commons Attribution (CC)
  */
-(function(HC, HA){
+(function(HC){
 /*jshint expr:true, boss:true */
 var UNDEFINED = void 0,
     mathRound = Math.round,
     mathMin   = Math.min,
     mathMax   = Math.max,
-    merge     = HC.merge,
 
     // cache prototypes
     axisProto  = HC.Axis.prototype,
@@ -28,7 +27,6 @@ var UNDEFINED = void 0,
 
 
 function Category(obj, parent) {
-	this.userOptions = deepClone(obj);
   this.name = obj.name || obj;
   this.parent = parent;
 
@@ -151,31 +149,8 @@ function walk(arr, key, fn) {
     fn(arr[l]);
   }
 }
-function deepClone(thing) {
-    var other, key;
-   
-    function isArray(obj) {
-        return Object.prototype.toString.call(obj) === '[object Array]';
-    }
-    
-    function isObject(obj) {
-        return Object.prototype.toString.call(obj) === '[object Object]';
-    }
 
-    // check for type, array or object
-    other = isArray(thing) ? [] : {};
 
-    for (key in thing) {
-        if (thing.hasOwnProperty(key)) {
-            if (isObject(thing[key])) {
-                other[key] = deepClone(thing[key]);
-            } else {
-                other[key] = thing[key];
-            }           
-        }        
-    };
-    return other;
-}
 
 //
 // Axis prototype
@@ -191,11 +166,9 @@ axisProto.init = function (chart, options) {
 
 // setup required axis options
 axisProto.setupGroups = function (options) {
-  var categories,
+  var categories  = HC.extend([], options.categories),
       reverseTree = [],
       stats       = {};
- 
-  categories = deepClone(options.categories);;
 
   // build categories tree
   buildTree(categories, reverseTree, stats);
@@ -248,7 +221,7 @@ axisProto.render = function () {
       grid    = axis.labelsGrid,
       horiz   = axis.horiz,
       d       = axis.labelsGridPath,
-      i       = options.drawHorizontalBorders === false ? depth+1 : 0,
+      i       = 0,
       offset  = axis.opposite ? (horiz ? top : right) : (horiz ? bottom : left),
       part;
 
@@ -299,9 +272,7 @@ axisProto.render = function () {
       tick.destroyed = 0;
     }
     else
-	  tick.label.attr({
-		visibility: ''
-	  });
+      tick.label.show();
   });
 };
 
@@ -312,7 +283,7 @@ axisProto.setCategories = function (newCategories, doRedraw) {
   this.setupGroups({
     categories: newCategories
   });
-  this.categories = this.userOptions.categories = newCategories;
+
   _axisSetCategories.call(this, this.categories, doRedraw);
 };
 
@@ -339,7 +310,6 @@ axisProto.cleanGroups = function () {
 
     delete group.tick;
   });
-  this.labelsGrid = null;
 };
 
 // keeps size of each categories level
@@ -392,8 +362,7 @@ tickProto.addGroupedLabels = function (category) {
       options = axis.options.labels,
       useHTML = options.useHTML,
       css     = options.style,
-      userAttr= options.groupedOptions,
-      attr    = { align: 'center' , rotation: options.rotation },
+      attr    = { align: 'center' },
       size    = axis.horiz ? 'height' : 'width',
       depth   = 0,
       label;
@@ -402,14 +371,9 @@ tickProto.addGroupedLabels = function (category) {
   while (tick) {
     if (depth > 0 && !category.tick) {
       // render label element
-      this.value = category.name;
-      var name = options.formatter ? options.formatter.call(this, category) : category.name,
-      	  hasOptions = userAttr && userAttr[depth-1],
-     	  mergedAttrs =  hasOptions ? merge(attr, userAttr[depth-1] ) : attr,
-     	  mergedCSS = hasOptions && userAttr[depth-1].style ? merge(css, userAttr[depth-1].style ) : css;
-      label = chart.renderer.text(name, 0, 0, useHTML)
-        .attr(mergedAttrs)
-        .css(mergedCSS)
+      label = chart.renderer.text(category.name, 0, 0, useHTML)
+        .attr(attr)
+        .css(css)
         .add(axis.labelGroup);
 
       // tick properties
@@ -439,12 +403,10 @@ tickProto.addGroupedLabels = function (category) {
 };
 
 // set labels position & render categories grid
-tickProto.render = function (index, old, opacity) {
-  _tickRender.call(this, index, old, opacity);
+tickProto.render = function (index, old) {
+  _tickRender.call(this, index, old);
 
-  var treeCat = this.axis.categories[this.pos];
-  
-  if (!this.axis.isGrouped || !treeCat || this.pos > this.axis.max)
+  if (!this.axis.isGrouped || !this.axis.categories[this.pos] || this.pos > this.axis.max)
     return;
 
   var tick    = this,
@@ -462,12 +424,9 @@ tickProto.render = function (index, old, opacity) {
       factor  = axis.directionFactor,
       xy      = tickPosition(tick, tickPos),
       start   = horiz ? xy.y : xy.x,
-      baseLine= axis.chart.renderer.fontMetrics(axis.options.labels.style.fontSize).b,
       depth   = 1,
       gridAttrs,
       lvlSize,
-      minPos,
-      maxPos,
       attrs,
       bBox;
 
@@ -490,31 +449,21 @@ tickProto.render = function (index, old, opacity) {
 
   size = start + size;
 
-  function fixOffset(group, treeCat, tick){
-  		var ret = 0;
-			if(isFirst) {
-					ret = HA.inArray(treeCat.name, treeCat.parent.categories);
-					ret = ret < 0 ? 0 : ret;
-					return ret;
-			} 
-			return ret;
-  }
 
 
   while (group = group.parent) {
-  	var fix = fixOffset(group, treeCat, tick);
-  	
     minPos  = tickPosition(tick, mathMax(group.startAt - 1, min - 1));
-    maxPos  = tickPosition(tick, mathMin(group.startAt + group.leaves - 1 - fix, max));
+    maxPos  = tickPosition(tick, mathMin(group.startAt + group.leaves - 1, max));
     bBox    = group.label.getBBox();
     lvlSize = axis.groupSize(depth);
+
     attrs = horiz ? {
       x: (minPos.x + maxPos.x) / 2,
-      y: size + lvlSize / 2 + baseLine - bBox.height / 2 - 4
+      y: bBox.height * factor + size + 4
     } : {
-			x: size + lvlSize / 2,
-			y: (minPos.y + maxPos.y - bBox.height) / 2  + baseLine
-		};
+      x: size,
+      y: (minPos.y + maxPos.y + bBox.height) / 2
+    };
 
     group.label.attr(attrs);
 
@@ -548,4 +497,4 @@ tickProto.getLabelSize = function () {
     return _tickGetLabelSize.call(this);
 };
 
-}(Highcharts, HighchartsAdapter));
+}(Highcharts));
