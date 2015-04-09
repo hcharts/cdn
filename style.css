@@ -1,46 +1,62 @@
-body {background: #ECECEC}
+body {
+    background: #ECECEC
+}
+
 header {
-padding: 2em 0;
-background: #006CEE;
-color: #fff;
-min-width: 650px;
+    padding: 2em 0;
+    background: #006CEE;
+    color: #fff;
+    min-width: 650px;
 }
+
 .container {
-min-width: 650px;
+    min-width: 650px;
 }
+
 .description {
-font-size: 20px;
-margin-left: 20px;
+    font-size: 20px;
+    margin-left: 20px;
 }
+
 .row {
-margin: 0 20px;
+    margin: 0 20px;
 }
+
 section {
-margin: 40px 0;
+    margin: 40px 0;
 }
+
 input[name="cdn"] {
-width: 500px;
-border: none;
-outline: none;
+    width: 500px;
+    border: none;
+    outline: none;
 }
+
 .tab-content {
-padding:20px 30px;
-background: #fff;
+    padding: 20px 30px;
+    background: #fff;
 }
-h3 {margin:30px 0;}
+
+h3 {
+    margin: 30px 0;
+}
+
 footer {
-background: #000;
-color: #fff;
-min-width: 650px;
+    background: #000;
+    color: #fff;
+    min-width: 650px;
 }
+
 footer p {
-margin: 20px;
+    margin: 20px;
 }
+
 footer a {
-color:#fff;
+    color: #fff;
 }
+
 footer a:hover {
-color:#fff;
-text-decoration: none;
-border-bottom: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
 }
