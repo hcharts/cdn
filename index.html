@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:wb="http://open.weibo.com/wb">
 <meta charset="utf-8">
 <title></title>
 <meta name="keywords" content="Highcharts, highcharts, Highcharts中文网, highcharts CDN, highcharts cdn, Highcharts中文网 CDN">
@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="http://static.hcharts.cn/bootstrap/v3/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="style.css" />
+
 <body>
     <header>
         <div class="container">
@@ -49,7 +50,6 @@
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/jquery/jquery-2.1.1.min.js"> （最新稳定版）
                                 </li>
-
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"> （常用版本）
                                 </li>
@@ -67,25 +67,20 @@
                                 <li>1.8.3</li>
                                 <li>1.8.2</li>
                             </ul>
-
                         </div>
                         <div class="tab-pane" id="highcharts">
                             <h3>Highcharts</h3>
-                           <p>URL 规则 ：<code> http://cdn.hcharts/highcharts/[{version}]/{file}</code></p>
-                           <ul>
+                            <p>URL 规则 ：<code> http://cdn.hcharts/highcharts/[{version}]/{file}</code></p>
+                            <ul>
                                 <li>{version} 表示版本号，非必须，没有版本号表示最新版</li>
-                                <li>{file}  文件，包含目录的完整文件名</li>
+                                <li>{file} 文件，包含目录的完整文件名</li>
                             </ul>
                             <p>详细的文件列表如下：</p>
-
                             <h4>最新版</h4>
                             <p>主文件</p>
                             <ul>
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/highcharts.js">
-                                </li>
-                                <li>
-                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/highstock.js">
                                 </li>
                             </ul>
                             <p>官方扩展
@@ -114,6 +109,21 @@
                                 </li>
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/heatmap.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/broken-axis.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/canvas-tools.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/drilldown.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/solid-gauge.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/modules/treemap.js">
                                 </li>
                             </ul>
                             <p>主题</p>
@@ -149,37 +159,228 @@
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/adapters/standalone-framework.js">
                                 </li>
                             </ul>
-
                             <h4>特定版本</h4>
                             <p>特定版本指的是在指定版本号的 Highcharts 文件，例如</p>
-
                             <ul>
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts/4.1.4/highcharts.js">
                                 </li>
-
                             </ul>
-
                             <p>目前我们提供的版本号包括：</p>
-
                             <p>4.x</p>
-
                             <ul>
                                 <li>4.1.4</li>
                                 <li>4.0.3</li>
                                 <li>4.0.1</li>
                             </ul>
-
-
-
-
-
                         </div>
                         <div class="tab-pane" id="highstock">
                             <h3>Highstock</h3>
+                            <p>URL 规则 ：<code> http://cdn.hcharts/highstock/[{version}]/{file}</code></p>
+                            <ul>
+                                <li>{version} 表示版本号，非必须，没有版本号表示最新版</li>
+                                <li>{file} 文件，包含目录的完整文件名</li>
+                            </ul>
+                            <p>详细的文件列表如下：</p>
+                            <h4>最新版</h4>
+                            <p>主文件</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/highstock.js">
+                                </li>
+                            </ul>
+                            <p>官方扩展
+                            </p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/highcharts-more.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/highcharts-3d.js">
+                                </li>
+                            </ul>
+                            <p>功能模块</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/exporting.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/no-data-to-display.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/data.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/funnel.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/heatmap.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/broken-axis.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/canvas-tools.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/drilldown.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/solid-gauge.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/modules/treemap.js">
+                                </li>
+                            </ul>
+                            <p>主题</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/dark-blue.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/dark-green.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/dark-unica.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/gray.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/grid.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/grid-light.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/sand-signika.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/themes/skies.js">
+                                </li>
+                            </ul>
+                            <p>适配器</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/adapters/standalone-framework.js">
+                                </li>
+                            </ul>
+                            <h4>特定版本</h4>
+                            <p>特定版本指的是在指定版本号的 Highcharts 文件，例如</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highstock/2.1.4/highcharts.js">
+                                </li>
+                            </ul>
+                            <p>目前我们提供的版本号包括：</p>
+                            <p>2.x</p>
+                            <ul>
+                                <li>2.1.4</li>
+                                <li>2.0.3</li>
+                                <li>2.0.1</li>
+                            </ul>
                         </div>
                         <div class="tab-pane" id="highmaps">
                             <h3>Highmaps</h3>
+                            <p>URL 规则 ：<code> http://cdn.hcharts/highstock/[{version}]/{file}</code></p>
+                            <ul>
+                                <li>{version} 表示版本号，非必须，没有版本号表示最新版</li>
+                                <li>{file} 文件，包含目录的完整文件名</li>
+                            </ul>
+                            <p>详细的文件列表如下：</p>
+                            <h4>最新版</h4>
+                            <p>主文件</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/highmaps.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/highcharts.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/map.js">
+                                </li>
+                            </ul>
+                            <p>注意：</p>
+
+                            <blockquote>
+
+                            Highmaps 可以单独使用，也可以和 Highcharts 一起使用。<br>单独使用时，只需要引入 <code>highmaps.js</code>；<br>和 Highcharts 一起使用时，需要引入的文件是：<code>highcharts.js</code> 和 <code>modules/map.js</code>
+                            </blockquote>
+                            
+                            <p>功能模块</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/exporting.js">
+                                </li>
+                               <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/data.js">
+                                </li>
+                               
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/heatmap.js">
+                                </li>
+                               
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/canvas-tools.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/drilldown.js">
+                                </li>
+                                
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/treemap.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/map.js">
+                                </li>
+                            </ul>
+                            <p>主题</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/dark-blue.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/dark-green.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/dark-unica.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/gray.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/grid.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/grid-light.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/sand-signika.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/themes/skies.js">
+                                </li>
+                            </ul>
+                            <p>适配器</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/adapters/standalone-framework.js">
+                                </li>
+                            </ul>
+                            <h4>特定版本</h4>
+                            <p>特定版本指的是在指定版本号的 Highmaps 文件，例如</p>
+                            <ul>
+                                <li>
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/1.1.4/highmaps.js">
+                                </li>
+                            </ul>
+                            <p>目前我们提供的版本号包括：</p>
+                            <p>1.x</p>
+                            <ul>
+                                <li>1.1.4</li>
+                                <li>1.0.1</li>
+                            </ul>
                         </div>
                         <div class="tab-pane" id="highcharts-plugins">
                             <h3>Highcharts 插件</h3>
@@ -201,6 +402,15 @@
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/jquery.highchartTable.js">
                                 </li>
                             </ul>
+                            <h4>Highcharts 插件机制</h4>
+                            <p>Highcharts 提供非常方便的插件机制，任何人都可以编写自己的插件来丰富 Highcharts 的功能。</p>
+                            <ul>
+                            <li><a href="http://www.highcharts.com/plugin-registry" target="_blank">官方插件列表</a></li>
+                            <li><a href="http://www.highcharts.com/plugin-registry/howto" target="_blank">插件开发教程</a></li>
+
+
+                        </ul>
+                        <p>我们欢迎你来编写插件或者写已有插件的介绍文章，更多信息请 <a href="http://www.hcharts.cn/about/contact.php" target="_blank">联系站长</a>。</p>
                         </div>
                         <div class="tab-pane" id="about">
                             <h3>关于</h3>
@@ -212,15 +422,30 @@
                             <p><b>关注我们</b></p>
                             <ul>
                                 <li>新浪微博：<a href="http://weibo.com/highcharts" target="_blank">http://weibo.com/highcharts</a></li>
+                                <li>微信公众号：<br>
+                                <img src="http://static.hcharts.cn//images/weixin.png" alt="" data-bd-imgshare-binded="1">
+                            </li>
                             </ul>
                             <p><b>赞助我们</b></p>
                             <p>开放 CDN 由个人维护，并且 CDN 资源是需要付费的，为了减少经济压力，同时也是对维护者的感谢和支持，希望大家都能积极赞助中文网。</p>
+                            <a href="http://www.hcharts.cn/about/donate.php" target="_blank"><button class="btn btn-success btn-large">赞助支持一下</button></a>
                             <h4>Github 开源</h4> Github 开源项目地址：<a href="https://github.com/hcharts/cdn" target="_blank">https://github.com/hcharts/cdn</a>
                             <h4>合作伙伴</h4>
-
+                            <ul>
+                                <li>CDN 提供商：<a href="http://aliyun.com" target="_blank">阿里云</a></li>
+                                <li>友情链接：<a href="http://dd.taobao.com" target="_blank">淘点点</a></li>
+                            </ul>
                         </div>
+                        <h4 class="comments-title">评论区</h4>
+                        <p>评论，纠错，反馈，吐槽等。</p>
+                        <div class="comments">
+                        <wb:comments url="http://cdn.hcharts.cn" width="auto" appkey="2113479283" ></wb:comments></div>
                     </div>
-                </div>
+                    </div>
+
+
+                    
+                
             </div>
         </div>
     </section>
@@ -231,6 +456,7 @@
     </footer>
     <script src="http://static.hcharts.cn/jquery/jquery-1.11.1.min.js"></script>
     <script src="http://static.hcharts.cn/bootstrap/v3/js/bootstrap.min.js"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2113479283" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>

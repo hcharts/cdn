@@ -9,6 +9,10 @@ header {
     min-width: 650px;
 }
 
+blockquote {
+    font-size: 1em;
+}
+
 .container {
     min-width: 650px;
 }
@@ -47,6 +51,17 @@ h4 {
     border-bottom: 1px solid #ccc;
 }
 
+.comments-title {
+    margin-top: 50px;
+}
+.comments {
+    margin: 40px 20px 0 20px;
+    background-color: #fff;
+}
+
+.wc_box {
+    border: none;
+}
 footer {
     background: #000;
     color: #fff;
