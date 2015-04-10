@@ -1,13 +1,15 @@
 <!doctype html>
 <html xmlns:wb="http://open.weibo.com/wb">
-<meta charset="utf-8">
-<title></title>
-<meta name="keywords" content="Highcharts, highcharts, Highcharts中文网, highcharts CDN, highcharts cdn, Highcharts中文网 CDN">
-<meta name="description" content="Highcharts中文网开放CDN，国内首个Highcharts专用CDN服务 ">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<link rel="stylesheet" type="text/css" href="http://static.hcharts.cn/bootstrap/v3/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="keywords" content="Highcharts, highcharts, Highcharts中文网, highcharts CDN, highcharts cdn, Highcharts中文网 CDN">
+    <meta name="description" content="Highcharts中文网开放CDN，国内首个Highcharts专用CDN服务 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="stylesheet" type="text/css" href="http://static.hcharts.cn/bootstrap/v3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 
 <body>
     <header>
@@ -302,32 +304,28 @@
                                 </li>
                             </ul>
                             <p>注意：</p>
-
                             <blockquote>
-
-                            Highmaps 可以单独使用，也可以和 Highcharts 一起使用。<br>单独使用时，只需要引入 <code>highmaps.js</code>；<br>和 Highcharts 一起使用时，需要引入的文件是：<code>highcharts.js</code> 和 <code>modules/map.js</code>
+                                Highmaps 可以单独使用，也可以和 Highcharts 一起使用。
+                                <br>单独使用时，只需要引入 <code>highmaps.js</code>；
+                                <br>和 Highcharts 一起使用时，需要引入的文件是：<code>highcharts.js</code> 和 <code>modules/map.js</code>
                             </blockquote>
-                            
                             <p>功能模块</p>
                             <ul>
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/exporting.js">
                                 </li>
-                               <li>
+                                <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/data.js">
                                 </li>
-                               
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/heatmap.js">
                                 </li>
-                               
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/canvas-tools.js">
                                 </li>
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/drilldown.js">
                                 </li>
-                                
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highmaps/modules/treemap.js">
                                 </li>
@@ -405,12 +403,10 @@
                             <h4>Highcharts 插件机制</h4>
                             <p>Highcharts 提供非常方便的插件机制，任何人都可以编写自己的插件来丰富 Highcharts 的功能。</p>
                             <ul>
-                            <li><a href="http://www.highcharts.com/plugin-registry" target="_blank">官方插件列表</a></li>
-                            <li><a href="http://www.highcharts.com/plugin-registry/howto" target="_blank">插件开发教程</a></li>
-
-
-                        </ul>
-                        <p>我们欢迎你来编写插件或者写已有插件的介绍文章，更多信息请 <a href="http://www.hcharts.cn/about/contact.php" target="_blank">联系站长</a>。</p>
+                                <li><a href="http://www.highcharts.com/plugin-registry" target="_blank">官方插件列表</a></li>
+                                <li><a href="http://www.highcharts.com/plugin-registry/howto" target="_blank">插件开发教程</a></li>
+                            </ul>
+                            <p>我们欢迎你来编写插件或者写已有插件的介绍文章，更多信息请 <a href="http://www.hcharts.cn/about/contact.php" target="_blank">联系站长</a>。</p>
                         </div>
                         <div class="tab-pane" id="about">
                             <h3>关于</h3>
@@ -422,13 +418,16 @@
                             <p><b>关注我们</b></p>
                             <ul>
                                 <li>新浪微博：<a href="http://weibo.com/highcharts" target="_blank">http://weibo.com/highcharts</a></li>
-                                <li>微信公众号：<br>
-                                <img src="http://static.hcharts.cn//images/weixin.png" alt="" data-bd-imgshare-binded="1">
-                            </li>
+                                <li>微信公众号：
+                                    <br>
+                                    <img src="http://static.hcharts.cn//images/weixin.png" alt="" data-bd-imgshare-binded="1">
+                                </li>
                             </ul>
                             <p><b>赞助我们</b></p>
                             <p>开放 CDN 由个人维护，并且 CDN 资源是需要付费的，为了减少经济压力，同时也是对维护者的感谢和支持，希望大家都能积极赞助中文网。</p>
-                            <a href="http://www.hcharts.cn/about/donate.php" target="_blank"><button class="btn btn-success btn-large">赞助支持一下</button></a>
+                            <a href="http://www.hcharts.cn/about/donate.php" target="_blank">
+                                <button class="btn btn-success btn-large">赞助支持一下</button>
+                            </a>
                             <h4>Github 开源</h4> Github 开源项目地址：<a href="https://github.com/hcharts/cdn" target="_blank">https://github.com/hcharts/cdn</a>
                             <h4>合作伙伴</h4>
                             <ul>
@@ -439,13 +438,10 @@
                         <h4 class="comments-title">评论区</h4>
                         <p>评论，纠错，反馈，吐槽等。</p>
                         <div class="comments">
-                        <wb:comments url="http://cdn.hcharts.cn" width="auto" appkey="2113479283" ></wb:comments></div>
+                            <wb:comments url="http://cdn.hcharts.cn" width="auto" appkey="2113479283"></wb:comments>
+                        </div>
                     </div>
-                    </div>
-
-
-                    
-                
+                </div>
             </div>
         </div>
     </section>
