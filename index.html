@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="span10">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs" id="hs-tab">
                         <li class="active">
                             <a href="#jquery" data-toggle="tab">jQuery</a>
                         </li>
@@ -231,6 +231,12 @@
     </footer>
     <script src="http://static.hcharts.cn/jquery/jquery-1.11.1.min.js"></script>
     <script src="http://static.hcharts.cn/bootstrap/v3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var hash = window.location.hash;
+        if(hash!=null || hash != "") {
+            $('#hs-tab a[href="'+hash+'"]').tab('show');
+        }
+    </script>
 </body>
 
 </html>
