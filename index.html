@@ -1,5 +1,6 @@
 <!doctype html>
 <html xmlns:wb="http://open.weibo.com/wb">
+
 <head>
     <meta charset="utf-8">
     <title>开放CDN服务</title>
@@ -413,7 +414,7 @@
                             <p>插件列表</p>
                             <ul>
                                 <li>
-                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/export-excel.js">   （<a href="http://bbs.hcharts.cn/thread-99-1-1.html" target="_blank">查看插件介绍</a>）
+                                    <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/export-excel.js"> （<a href="http://bbs.hcharts.cn/thread-99-1-1.html" target="_blank">查看插件介绍</a>）
                                 </li>
                                 <li>
                                     <input name="cdn" onclick="this.select();" value="http://cdn.hcharts.cn/highcharts-plugins/grouped-categories.js">
@@ -472,7 +473,21 @@
                         <h4 class="comments-title">评论区</h4>
                         <p>评论，纠错，反馈，吐槽等。</p>
                         <div class="comments">
-                            <wb:comments url="http://cdn.hcharts.cn" width="auto" appkey="2113479283"></wb:comments>
+                            <!-- <wb:comments url="http://cdn.hcharts.cn" width="auto" appkey="2113479283"></wb:comments> -->
+                            <div class="ds-thread" data-thread-key="" data-title="开放CDN服务" data-url="http://cdn.hcharts.cn/"></div>
+                            <script type="text/javascript">
+                            var duoshuoQuery = {
+                                short_name: "highcharts"
+                            };
+                            (function() {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript';
+                                ds.async = true;
+                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -486,19 +501,18 @@
     </footer>
     <script src="http://static.hcharts.cn/jquery/jquery-1.11.1.min.js"></script>
     <script src="http://static.hcharts.cn/bootstrap/v3/js/bootstrap.min.js"></script>
-    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2113479283" type="text/javascript" charset="utf-8"></script>
     <script>
-        var hash = window.location.hash;
-        if(hash!=null || hash != "") {
-            $('#hs-tab a[href="'+hash+'"]').tab('show');
-        }
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "//hm.baidu.com/hm.js?c98d038816b0ab3e77aa7c4d6070de9b";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
+    var hash = window.location.hash;
+    if (hash != null || hash != "") {
+        $('#hs-tab a[href="' + hash + '"]').tab('show');
+    }
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c98d038816b0ab3e77aa7c4d6070de9b";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
     </script>
 </body>
 
