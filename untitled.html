@@ -1,0 +1,911 @@
+<link rel="stylesheet" type="text/css" href="https://t.alipayobjects.com/images/rmsweb/T1gUVfXmJcXXXXXXXX.css">
+<style type="text/css">
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    font-size: 12px;
+}
+
+#main {
+    width: 100%;
+    overflow: hidden;
+    min-height: 0;
+}
+
+#wrapper {
+    overflow: hidden;
+}
+
+#mainContent {
+    margin-left: 0;
+    height: 0;
+}
+
+
+/*** reset start **/
+
+.nav-tabs {
+    padding: 0 20px;
+}
+
+.nav>li>a {
+    padding: 6px 20px;
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+.amap-info-close {
+    right: 5px!important;
+}
+
+.amap-info-close:hover {
+    text-decoration: none;
+}
+
+.amap-info-outer,
+.amap-menu-outer {
+    border-radius: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    position: relative;
+    width: 340px!important;
+}
+
+.amap-info-outer:hover,
+.amap-menu-outer:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.map-tip {
+    position: relative;
+}
+
+.map-chart {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background-image: url('https://t.alipayobjects.com/images/rmsweb/T1BGFhXfNfXXXXXXXX.png');
+    background-size: 25px 25px;
+    cursor: pointer;
+}
+
+.zoom-in {
+    position: absolute;
+    bottom: 35px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background-image: url('https://t.alipayobjects.com/images/rmsweb/T1gF0hXmtkXXXXXXXX.png');
+    background-size: 25px 25px;
+    cursor: pointer;
+}
+
+.zoom-out {
+    position: absolute;
+    bottom: 60px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background-image: url('https://t.alipayobjects.com/images/rmsweb/T1lGphXiphXXXXXXXX.png');
+    background-size: 25px 25px;
+    cursor: pointer;
+}
+
+i.icon.left {
+    position: relative;
+    left: 4px;
+}
+
+
+/** reset end ***/
+
+
+/** page css */
+
+#options {
+    width: 300px;
+    /*overflow: hidden;*/
+    padding: 0 20px;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    border-right: 1px solid #aaa;
+}
+
+.flex {
+    width: 20px;
+    padding: 30px 0;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    /*border-radius: 0 3px 3px 0;*/
+    border-left: none;
+    left: 299px;
+    /*right: -20px;*/
+    top: 50%;
+    position: absolute;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#mapContainer,
+#mapLoader {
+    width: calc(100% -300px);
+    top: 100px;
+    bottom: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    left: 300px;
+}
+
+#mapLoader {
+    display: none;
+}
+
+#mapLoader .wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.6;
+    position: relative;
+    z-index: 0;
+}
+
+#mapLoader .content {
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -400px;
+    font-size: 14px;
+    position: relative;
+    z-index: 1000;
+    color: #fff;
+}
+
+#mapLoader img {
+    margin-bottom: 10px;
+}
+
+
+/*** ***/
+
+.food {
+    color: #006cee;
+}
+
+.place {
+    color: #ff0000;
+}
+
+.search {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /*margin:20px 0;*/
+}
+
+.search input {
+    outline: none;
+    height: 34px;
+    padding: 8px 10px;
+    border: 1px solid #006cee;
+    width: 200px;
+}
+
+.search p {
+    margin: 10px 0;
+}
+
+.btn {
+    border-radius: 0;
+    outline: none;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.result-list ul {
+    padding-left: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #eee;
+    padding: 0;
+    border-radius: 5px;
+    list-style: none;
+}
+
+.place-result-list {
+    max-height: 140px!important;
+}
+
+.result-list li {
+    padding: 6px 10px;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.result-list li:hover {
+    background-color: #CAE1FF;
+}
+
+p.range {
+    margin: 20px 0;
+}
+
+p.range input[type='range'] {
+    width: 190px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin: 0 10px;
+}
+
+.amap-info-content .btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+</style>
+<div id="options">
+    <div class="options box">
+        <ul class="search">
+            <li>
+                <h3>商户检索</h3>
+                <input type="text" placeholder="请输入 PID 或 Shop_ID" id="shop">
+                <button class="btn btn-success" onclick="searchShop();">搜索</button>
+                <div id="shopResult" class="result-list">
+                    <p>测试pid：2088911377705785</p>
+                </div>
+            </li>
+            <li>
+                <h3>地点检索</h3>
+                <input type="text" placeholder="请输入地点" id="place">
+                <button class="btn btn-success" onclick="searchPlace();">搜索</button>
+                <div id="placeResult" class="result-list">
+                    <p>测试：证大五道口广场</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="flex active">
+    <i class="angle left icon"></i>
+</div>
+<div id="mapContainer"></div>
+<div id="mapLoader">
+    <div class="wrapper"></div>
+    <div class="content">
+        <img src="https://t.alipayobjects.com/images/rmsweb/T1UWphXddhXXXXXXXX.gif" alt="">
+        <br> 数据加载中 ...
+    </div>
+</div>
+<div class="modal fade bs-example-modal-lg" id="shop-chart-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">xx 交易数据</h4>
+            </div>
+            <div class="modal-body">
+                <div id="shop-chart-container" style="min-width:800px;height:400px;">
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<script type="text/javascript" src="https://t.alipayobjects.com/images/rmsweb/T1g.0fXmFbXXXXXXXX.js"></script>
+<script type="text/javascript" src="https://t.alipayobjects.com/images/rmsweb/T1FTxfXjFxXXXXXXXX.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=112d274853a7abc4d90a2223b661b7bc"></script>
+<script type="text/javascript">
+var height = jQuery(window).height() - 100;
+jQuery("#wrapper, #mapLoader, #options, #mapContainer").height(height);
+
+
+jQuery(".flex").click(function() {
+    toggleOptions(jQuery(this).hasClass('active'));
+});
+
+
+jQuery('#shop').bind('keypress', function(event) {
+    if (event.keyCode == "13") {
+        searchShop();
+    }
+});
+
+jQuery("#range").change(function() {
+    jQuery("#rangeValue").html(jQuery(this).val() + "km");
+});
+
+jQuery('#place').bind('keypress', function(event) {
+    if (event.keyCode == "13") {
+        searchPlace();
+    }
+});
+
+
+
+var chart = null;
+/**
+ * 实例化地图
+ * @type {AMap}
+ */
+var map = new AMap.Map("mapContainer", {
+    resizeEnable: true,
+    //center: new AMap.LngLat(106.153576, 36.287459),
+    level: 4,
+    zooms: [3, 18]
+});
+
+var circleEditor = null;
+
+//地图中添加地图操作ToolBar插件
+map.plugin(['AMap.ToolBar'], function() {
+    //设置地位标记为自定义标记
+    var toolBar = new AMap.ToolBar();
+    map.addControl(toolBar);
+});
+
+
+
+var marker = [];
+var placeMarker = [];
+var windowsArr = [];
+var placeWindowsArr = [];
+
+/**
+ * 折叠与展开侧边栏
+ * @param  {[type]} ) {                   toggleOptions(jQuery(this).hasClass('active'));    } [description]
+ * @return {[type]}   [description]
+ */
+function toggleOptions(flag) {
+    if (flag) {
+
+        jQuery("#options").hide("slow", function() {
+
+        });
+
+        jQuery("#mapContainer").css("left", 0);
+
+        jQuery(".flex").css("left", 0);
+        jQuery(".flex").removeClass("active");
+        jQuery(".flex").html('<i class="angle right icon"></i>')
+    } else {
+
+        jQuery("#options").show();
+        jQuery("#mapContainer").css("left", 300);
+        jQuery(".flex").css("left", 299);
+        jQuery(".flex").addClass("active");
+        jQuery(".flex").html('<i class="angle left icon"></i>')
+    }
+};
+
+/**
+ * 渲染商户交易数据图表
+ * @param  {[type]} shopId [description]
+ * @return {[type]}        [description]
+ */
+function showChart(shopId) {
+
+    jQuery("#shop-chart-modal").modal("show");
+    var chart = new Highcharts.Chart({
+        // jQuery("#shop-chart-container").highcharts({
+        chart: {
+            renderTo: 'shop-chart-container'
+        },
+        title: {
+            text: 'Monthly Average Temperature',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        credits: {
+            enabled: false
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+
+        series: [{
+            name: 'Tokyo',
+            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        }, {
+            name: 'New York',
+            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+        }, {
+            name: 'Berlin',
+            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+        }, {
+            name: 'London',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }]
+    }, function(c) {
+        setTimeout(function() {
+            c.reflow()
+        }, 300);
+    });
+
+    chart.reflow();
+
+    // , function(c) {
+    //     chart = c;
+    //     setTimeout(function() {
+    //         chart.reflow();
+    //     }, 300)
+    // })
+};
+
+function clearSearch(target) {
+    if (target === "shop") {
+        jQuery("#shopResult").html("");
+        jQuery("#shop").val("");
+    } else if (target === "place") {
+        jQuery("#placeResult").html("");
+        jQuery("#place").val("");
+    }
+};
+
+
+/**
+ * 搜索商户
+ * @return {[type]} [description]
+ */
+function searchShop() {
+    map.clearMap();
+    clearSearch("place");
+    var pid = jQuery("#shop").val();
+    if (pid !== null && pid !== "") {
+
+        // var tableName = "STORE_INFO";
+        // if(pid.split("_").length>0) {
+        //     tableName = "adm_ddm_ot_store_info";
+        // }
+
+        jQuery("#mapLoader").show();
+        jQuery.ajax({
+            url: 'https://jiankong.alipay.com/exhibit/getDataByTable.json',
+            dataType: "json",
+            data: {
+                keys: [pid],
+                tableName: "adm_ddm_ot_store_info",
+                tableType: "DIMENSION"
+            },
+            success: function(data) {
+                if (data.success) {
+                    keywordSearch_CallBack(data.content);
+                } else {
+                    jQuery("#shopResult").html("<p>查询失败！</p>");
+                }
+
+                jQuery("#mapLoader").hide();
+            }
+
+        });
+
+
+    } else {
+        jQuery("#shopResult").html("<p>请输入商户 PID </p>");
+
+        // 清除描点
+        //map.clearMap();
+    }
+};
+
+/**
+ * 搜索商户回调函数
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
+function keywordSearch_CallBack(data) {
+    var resultStr = "";
+    var poiArr = data;
+    var resultCount = poiArr.length;
+
+    var listContent = '<p>共检索到 ' + resultCount + ' 个商家</p><ul>';
+
+    //var template = _.template('');
+
+    marker = [];
+    windowsArr = [];
+    for (var i = 0; i < resultCount; i++) {
+
+        resultStr += "<div class='map-tip' id='divid" + (i + 1) + "' onmouseover='openMarkerTipById1('shop'," + i + ",this)' onmouseout='onmouseout_MarkerStyle(" + (i + 1) + ",this)' style=\"font-size: 12px;cursor:pointer;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\"><table><tr><td><img src=\"http://webapi.amap.com/images/" + (i + 1) + ".png\"></td>" + "<td><h3><font color=\"#00a6ac\">名称: " + poiArr[i].name + "</font></h3>";
+
+        listContent += '<li data-index="' + i + '">' + (i + 1) + ". " + poiArr[i].name + '</li>';
+
+
+        resultStr += TipContents(i, poiArr[i].address, poiArr[i].mobile_no, poiArr[i].merchant_name, poiArr[i].shop_id) + "</td></tr></table></div>";
+        addShopMarker(i, poiArr[i]);
+    }
+
+    listContent += '</ul>';
+
+    jQuery("#shopResult").html(listContent);
+
+    jQuery("#shopResult").delegate("li", "click", function(e) {
+        var currentTarget = jQuery(e.currentTarget);
+        var index = currentTarget.data("index");
+        openMarkerTipById1('shop', index);
+
+    });
+
+    map.setFitView();
+}
+
+
+/**
+ * 添加商户描点
+ * @param {[type]} i [description]
+ * @param {[type]} d [description]
+ */
+function addShopMarker(i, d) {
+    var lngX = d.longitude ;
+    var latY = d.latitude -2 ;
+    var markerOption = {
+        map: map,
+        // icon: "http://webapi.amap.com/images/" + (i + 1) + ".png",
+        icon: "<span style='width:2px;height:2px;background-color:#ff0000;'></span>",
+        content: "<span style='display:block;width:8px;height:8px;border-radius:50%;background-color:#006cee;'></span>",
+        position: new AMap.LngLat(lngX, latY),
+        topWhenMouseOver: true,
+        title: d.name
+    };
+    var mar = new AMap.Marker(markerOption);
+    marker.push(new AMap.LngLat(lngX, latY));
+
+
+    var infoWindow = new AMap.InfoWindow({
+        content: "<h4 class='food'>" + (i + 1) + ". " + d.name + "</font></h4>" + TipContents(i, d.address, d.mobile_no, d.merchant_name, d.shop_id),
+        size: new AMap.Size(300, 0),
+        autoMove: true,
+        offset: new AMap.Pixel(-5, -26)
+    });
+
+    windowsArr.push(infoWindow);
+    var aa = function(e) {
+        infoWindow.open(map, mar.getPosition());
+    };
+    AMap.event.addListener(mar, "click", aa);
+}
+
+/**
+ * 商户提示框
+ * @param {[type]} type    [description]
+ * @param {[type]} address [description]
+ * @param {[type]} tel     [description]
+ * @param {[type]} shopId  [description]
+ */
+function TipContents(index, address, tel, merchant_name, shop_id) { //窗体内容
+
+    if (address == "" || address == "undefined" || address == null || address == " undefined" || typeof address == "undefined") {
+        address = "暂无";
+    }
+    if (tel == "" || tel == "undefined" || tel == null || tel == " undefined" || typeof address == "tel") {
+        tel = "暂无";
+    }
+    if (merchant_name == "" || merchant_name == "undefined" || merchant_name == null || merchant_name == " undefined") {
+        merchant_name = "暂无";
+    }
+
+    if (shop_id == "" || shop_id == "undefined" || shop_id == null || shop_id == " undefined") {
+        shop_id = "暂无";
+    }
+
+
+    var str = "  地址：" + address + "<br />  电话：" + tel + " <br />  公司：" + merchant_name + "<br/ > 商店编号： " + shop_id +
+        "<div class='map-chart' onclick='showChart(" + shop_id + ")' title='查看商户交易数据'></div><div class='zoom-out' onclick='zoom(true," + index + ")' title=''></div><div class='zoom-in' onclick='zoom(false, " + index + ")' title=''></div>";
+
+
+    return str;
+}
+
+/**
+ * 搜索地点
+ * @return {[type]} [description]
+ */
+function searchPlace() {
+    // 清除地图描点
+    jQuery("#mapLoader").show();
+
+    map.clearMap();
+    clearSearch("shop");
+
+    var place = jQuery("#place").val();
+
+    if (place !== null && place !== "") {
+
+        var range = jQuery("#range").val();
+
+        var MSearch;
+        AMap.service(["AMap.PlaceSearch"], function() {
+            MSearch = new AMap.PlaceSearch({ //构造地点查询类
+                pageSize: 10,
+                pageIndex: 1
+            });
+            //关键字查询
+            MSearch.search(place, function(status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+
+                    placeSearch_CallBack(result);
+
+                } else {
+                    jQuery("#placeResult").html("<p>无搜索结果，请输入精确地址或地名！</p>");
+                    jQuery("#mapLoader").hide();
+                }
+            });
+        });
+    } else {
+
+
+        jQuery("#placeResult").html("<p>请输入搜索的地点，例如：证大五道口广场</p>");
+        jQuery("#mapLoader").hide();
+    }
+
+
+};
+
+/**
+ * 搜索地点回调函数
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
+function placeSearch_CallBack(data) {
+    var resultStr = "";
+    var poiArr = data.poiList.pois;
+    var resultCount = poiArr.length;
+
+    var resultListStr = '<p>共搜索到 ' + resultCount + ' 个地点</p><ul class="place-result-list">';
+
+    placeMarker = [];
+    placeWindowsArr = [];
+    for (var i = 0; i < resultCount; i++) {
+
+        // resultStr += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById1(" + i + ",this)' onmouseout='onmouseout_MarkerStyle(" + (i + 1) + ",this)' style=\"font-size: 12px;cursor:pointer;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\"><table><tr><td><img src=\"http://webapi.amap.com/images/" + (i + 1) + ".png\"></td>" + "<td><h3><font color=\"#00a6ac\">名称: " + poiArr[i].name + "</font></h3>";
+        // resultStr += TipContents(poiArr[i].type, poiArr[i].address, poiArr[i].tel) + "</td></tr></table></div>";
+        addPlaceMarker(i, poiArr[i]);
+
+        resultListStr += '<li data-index="' + i + '">' + (i + 1) + ". " + poiArr[i].name + '</li>'
+
+    }
+
+    resultListStr += "</ul>";
+
+    jQuery("#placeResult").html(resultListStr);
+
+    jQuery("#placeResult").delegate("li", "click", function(e) {
+        var currentTarget = jQuery(e.currentTarget);
+        var index = currentTarget.data("index");
+        openMarkerTipById1('place', index);
+    });
+    map.setFitView();
+
+
+    jQuery("#mapLoader").hide();
+};
+
+/**
+ * 添加商户描点
+ * @param {[type]} i [description]
+ * @param {[type]} d [description]
+ */
+function addPlaceMarker(i, d) {
+
+    var lngX = d.location.lng;
+    var latY = d.location.lat;
+    if (!lngX || !latY) {
+        return;
+    }
+    var markerOption = {
+        map: map,
+        icon: "http://webapi.amap.com/images/" + (i + 1) + ".png",
+        //icon: "<span style='width:2px;height:2px;background-color:#ff0000;'></span>",
+        //content: "<span style='display:block;width:10px;height:10px;border-radius:50%;background-color:#ff0000;'></span>",
+        position: new AMap.LngLat(lngX, latY),
+        topWhenMouseOver: true,
+        title: d.name
+    };
+    var mar = new AMap.Marker(markerOption);
+    placeMarker.push(new AMap.LngLat(lngX, latY));
+
+    var infoWindow = new AMap.InfoWindow({
+        content: "<h4 class='place'>" + (i + 1) + ". " + d.name + "</font></h4>" + placeTipContents(i, d.name, d.address, d.location),
+        size: new AMap.Size(300, 0),
+        autoMove: true,
+        offset: new AMap.Pixel(0, -20)
+    });
+
+    placeWindowsArr.push(infoWindow);
+    var aa = function(e) {
+        infoWindow.open(map, mar.getPosition());
+    };
+    AMap.event.addListener(mar, "click", aa);
+}
+
+
+
+
+function placeTipContents(index, name, address, location) {
+
+    if (address == "" || address == "undefined" || address == null || address == " undefined" || typeof address == "undefined") {
+        address = "暂无";
+    }
+
+
+
+    var str = "  地址：" + address + "<hr />  在这里附件找商户：" + "<form onsubmit='return searchShopByPlace(this);' data-index='" + index + "'>" +
+        "<input type='hidden' name='lng' value='" + location.lng + "'><input type='hidden' name='lat' value='" + location.lat + "'>" +
+        "<p class='range'><span>0.5km</span><input name='range' type='range' min='0.5' max='3' step='0.5' value='1' onchange='rangeChange(this);'><span>3km</span></p>" +
+        "<p><label>搜索范围：</label><label class='rangeValue'>1km</label></p><button class='btn btn-success'>搜索</butto></form>";
+    // "<div class='map-chart' onclick='showChart(" + shopId + ")' title='查看商户交易数据'></div>";
+
+
+    return str;
+};
+
+function searchShopByPlace(thiss) {
+    var _this = jQuery(thiss);
+
+    var lat = _this.find("input[name='lat']").val();
+    var lng = _this.find("input[name='lng']").val();
+    var range = _this.find("input[name='range']").val();
+
+
+    var index = _this.data("index");
+    // console.log(_this.serialize());
+
+    var result = [];
+    for (var i = 0; i < 10; i++) {
+        var obj = {
+            name: '模拟数据' + i,
+            address: null,
+            mobile_no: null,
+            shop_id: 22222222,
+            merchant_name: '百胜餐饮集团',
+            longitude: lng - (i % 2 == 0 ? 0.001 * i : -0.001 * i),
+            latitude: lat - (i % 2 == 0 ? -0.001 * i : +0.001 * i)
+        };
+
+        result.push(obj);
+    }
+
+
+    var circle = new AMap.Circle({
+        map: map,
+        center: placeMarker[index],
+        radius: 1000 * range,
+        strokeColor: "#F33",
+        strokeOpacity: 1,
+        strokeWeight: 1,
+        fillColor: "eee",
+        fillOpacity: 0.35,
+        zIndex:1000
+    });
+    // circle.setOptions({
+    //     center: placeMarker[index],
+    //     radius: 1000 * range
+    // });
+
+        //map.removeControl(circleEditor);
+
+
+    map.plugin(["AMap.CircleEditor"], function() {
+        circleEditor = new AMap.CircleEditor(map, circle);
+        circleEditor.open();
+
+        AMap.event.addListener(circleEditor, "adjust", function(type, target, radius) {
+            console.log(type, target, radius);
+        });
+
+        /**
+         * 禁止圆形拖动
+         * @param  {[type]} ) {                       return false;        } [description]
+         * @return {[type]}   [description]
+         */
+        AMap.event.addListener(circleEditor, "move", function() {
+            return false;
+        });
+    });
+
+
+
+
+
+    // var result = [{
+    //     name: '肯德基(中八站餐厅)',
+    //     address: '中八站餐厅',
+    //     mobile_no: null,
+    //     shop_id: 22222222,
+    //     merchant_name: '百胜餐饮集团',
+    //     longitude: 113.232147,
+    //     latitude: 23.125156
+    // }, {
+    //     name: '肯德基(华电餐厅）',
+    //     address: '南京市栖霞区迈皋桥高家村４２号１-２层',
+    //     mobile_no: null,
+    //     shop_id: 22222222,
+    //     merchant_name: '百胜餐饮集团',
+    //     longitude: 118.81102,
+    //     latitude: 32.10194
+    // }, {
+    //     name: '肯德基(波斯特餐厅)',
+    //     address: '波斯特餐厅',
+    //     mobile_no: null,
+    //     merchant_name: '百胜餐饮集团',
+    //     shop_id: 22222222,
+    //     longitude: 126.642464,
+    //     latitude: 45.756966
+    // }];
+
+
+    keywordSearch_CallBack(result);
+
+    closeMarkerTipById('place', index);
+
+    return false;
+};
+
+function rangeChange(thiss) {
+    var _this = jQuery(thiss);
+    _this.parent().parent().find(".rangeValue").html(_this.val() + 'km');
+};
+
+function openMarkerTipById1(type, pointid) { //根据id 打开搜索结果点tip
+    // thiss.style.background = '#CAE1FF';
+    if (type === "shop") {
+        windowsArr[pointid].open(map, marker[pointid]);
+        map.setFitView();
+    } else {
+        map.setCenter(placeMarker[pointid]);
+        map.setZoom(16);
+        placeWindowsArr[pointid].open(map, placeMarker[pointid]);
+    }
+
+}
+
+function closeMarkerTipById(type, pointid) {
+    if (type === "shop") {
+        windowsArr[pointid].close();
+    } else {
+        placeWindowsArr[pointid].close();
+    }
+}
+
+function onmouseout_MarkerStyle(pointid, thiss) { //鼠标移开后点样式恢复
+    thiss.style.background = "";
+}
+
+function zoom(flag, index) {
+    var level = map.getZoom();
+
+    if (flag) { // 放大
+        map.setCenter(marker[index])
+        map.setZoom(16);
+    } else {
+        map.setZoom(4);
+    }
+};
+</script>
