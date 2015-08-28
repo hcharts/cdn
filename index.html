@@ -105,6 +105,12 @@
                                     <input name="cdn" value="http://cdn.hcharts.cn/highcharts/modules/exporting.js">
                                 </li>
                                 <li>
+                                    <input name="cdn" value="http://cdn.hcharts.cn/highcharts/modules/boost.js"> <span> (4.1.8 新增)</span>
+                                </li>
+                                <li>
+                                    <input name="cdn" value="http://cdn.hcharts.cn/highcharts/modules/offline-exporting.js"> <span>(4.1.8 新增)</span>
+                                </li>
+                                <li>
                                     <input name="cdn" value="http://cdn.hcharts.cn/highcharts/modules/no-data-to-display.js">
                                 </li>
                                 <li>
@@ -217,6 +223,12 @@
                             <ul>
                                 <li>
                                     <input name="cdn" value="http://cdn.hcharts.cn/highstock/modules/exporting.js">
+                                </li>
+                                <li>
+                                    <input name="cdn" value="http://cdn.hcharts.cn/highstock/modules/boost.js"> <span> (4.1.8 新增)</span>
+                                </li>
+                                <li>
+                                    <input name="cdn" value="http://cdn.hcharts.cn/highstock/modules/offline-exporting.js"> <span>(4.1.8 新增)</span>
                                 </li>
                                 <li>
                                     <input name="cdn" value="http://cdn.hcharts.cn/highstock/modules/no-data-to-display.js">
@@ -337,6 +349,12 @@
                                     <input name="cdn" value="http://cdn.hcharts.cn/highmaps/modules/exporting.js">
                                 </li>
                                 <li>
+                                    <input name="cdn" value="http://cdn.hcharts.cn/highmaps/modules/boost.js"> <span> (4.1.8 新增)</span>
+                                </li>
+                                <li>
+                                    <input name="cdn" value="http://cdn.hcharts.cn/highmaps/modules/offline-exporting.js"> <span>(4.1.8 新增)</span>
+                                </li>
+                                <li>
                                     <input name="cdn" value="http://cdn.hcharts.cn/highmaps/modules/data.js">
                                 </li>
                                 <li>
@@ -352,7 +370,7 @@
                                     <input name="cdn" value="http://cdn.hcharts.cn/highmaps/modules/treemap.js">
                                 </li>
                                 <li>
-                                    <input name="cdn" value="http://cdn.hcharts.cn/highmaps/modules/map.js">
+                                    <input name="cdn" value="http://cdn.hcharts.cn/highmaps/modules/map.js"> <span>(Highmaps专用)</span>
                                 </li>
                             </ul>
                             <p>主题</p>
@@ -414,6 +432,7 @@
                         </div>
                         <div class="tab-pane" id="highcharts-plugins">
                             <h3>Highcharts 插件</h3>
+                            <p class="bg-danger">重要提醒：所有插件见以移到这里 <a href="http://www.hcharts.cn/p/index.php">http://www.hcharts.cn/p/index.php</a> ，这里将不再更新维护</p>
                             <p>插件列表</p>
                             <ul>
                                 <li>
@@ -509,7 +528,7 @@
     if (hash != null || hash != "") {
         $('#hs-tab a[href="' + hash + '"]').tab('show');
     }
-    jQuery("input[name='cdn']").click(function(){
+    jQuery("input[name='cdn']").click(function() {
         jQuery(this).select();
     });
     var _hmt = _hmt || [];

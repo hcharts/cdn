@@ -36,6 +36,10 @@ input[name="cdn"] {
     outline: none;
 }
 
+.tab-pane li span {
+    color: red;
+}
+
 .tab-content {
     padding: 20px 30px;
     background: #fff;
@@ -46,7 +50,7 @@ h3 {
 }
 
 h3>a {
-    color:#000;
+    color: #000;
     text-decoration: none;
 }
 
@@ -55,12 +59,18 @@ h3>a:hover {
     text-decoration: none;
     border-bottom: 1px solid #000;
 }
+
 h4 {
     margin: 20px 0;
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
 }
 
+
+.bg-danger {
+    padding:30px;
+    margin-bottom: 30px;
+}
 .comments-title {
     margin-top: 50px;
 }
@@ -69,7 +79,6 @@ h4 {
     margin: 40px 20px 0 20px;
     background-color: #fff;
 }
-
 
 footer {
     background: #000;
