@@ -1,0 +1,21 @@
+{
+  "name": "cdn",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hcharts/cdn",
+  "authors": [
+    "zhy1stgg <823402333@qq.com>"
+  ],
+  "description": "cdn serice special for highcharts power by hcharts.cn",
+  "keywords": [
+    "cdn",
+    "highcharts"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
