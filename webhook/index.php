@@ -1,4 +1,4 @@
 <?php 
 	exec('cd ..');
-	exec('git pull origin master');
+	exec('sudo git pull origin master');
 ?>
