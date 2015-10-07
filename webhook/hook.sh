@@ -1,5 +1,7 @@
-!/bin/bash
-echo 'starting...' >> tmp.log
+#!/bin/bash
+times=`date +'%Y-%m-%d %H:%M:%S'`
+echo  $times'   starting....' >> hook.log
 cd ..
 sudo git pull origin master
-echo 'done' >> tmp.log
+endTime=`date +'%Y-%m-%d %H:%M:%S'`
+echo $endTime'   done' >> webhook/hook.log

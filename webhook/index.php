@@ -1,4 +1,3 @@
 <?php 
-	exec('cd ..');
-	exec('sudo git pull origin master');
+	exec('/usr/bin/sudo  /bin/bash hook.sh');
 ?>
