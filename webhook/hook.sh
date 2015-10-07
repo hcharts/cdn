@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 echo 'starting...' >> tmp.log
 cd ..
 sudo git pull origin master
