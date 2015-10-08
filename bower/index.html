@@ -1,0 +1,115 @@
+<!doctype html>
+<html xmlns:wb="http://open.weibo.com/wb">
+
+<head>
+    <meta charset="utf-8">
+    <title>开放CDN服务</title>
+    <meta name="keywords" content="Highcharts, highcharts, Highcharts中文网, highcharts CDN, highcharts cdn, Highcharts中文网 CDN">
+    <meta name="description" content="Highcharts中文网开放CDN，国内首个Highcharts专用CDN服务 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/cdn/style.css" />
+</head>
+
+<body>
+    <header>
+
+        <div class="container">
+            <img src="../static/cdn/logo.png" width="258px" height="60px" alt="开放CDN"><span class="slogan"> | 国内首个 Highcharts 专用 CDN 服务</span>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">首页</a></li>
+                    <li><a href="/bower/index.html" class="active">Bower 包管理</a></li>
+                    <li><a href="/about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <article class="row" id="app">
+                <div class="article-header">
+                    <h1>基于 Bower 的包管理</h1>
+                    <p>基于 Bower 的前端包管理工具，可以方便的搜索或安装需要的前端包资源</p>
+                    <span class="input-warpper">
+                    <input type="text" v-model="s" v-on="focus: searchResultShow = 'block', blur: inputBlur" class="form-control" placeholder="搜索或安装包">
+                    <div class="drilldown" style="display: {{searchResultShow}}">
+                        <ul>
+                            <li v-repeat="searchResult" v-on="click: select(name)">{{name}} {{version}}</li>
+                        </ul>
+                    </div>
+                    </span>
+                    <button class="btn btn-default" v-on="click: search"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;搜索</button>
+                    
+                </div>
+                <h3>已安装的包</h3>
+                <ul class="installed col-lg-5">
+                    <li v-repeat="devDependencies" v-on="click: showDetail($key)" v-attr="class: $key===active ? 'active' : ''">{{$key}}</li>
+                </ul>
+                <div class="col-lg-7 detail">
+                    <h4>详细信息</h4>
+                    <p>主文件：</p>
+                    <ul>
+                        <li v-repeat="main">
+                            <input value="http://cdn.hcharts.cn/bower_compoents/{{active}}/{{$value}}" readonly onclick="this.select()">
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="subfooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h4>
+                        关于
+                    </h4>
+                    <p>开放 CDN 是由 <a href="http://www.hcharts.cn" target="_blank">Highcharts 中文网</a>提供的国内首个 Highcharts 专用CDN服务，致力于为 Highcharts、 Highstock、Highmaps、jQuery 等和 Highcharts 相关的项目提供稳定、快速的免费 CDN 服务，开放 CDN 所有文件一直保持和官方同步。</p>
+                    <p>
+                        自 2013 年 10 月上线以来已经为上千家网站、应用、项目提供了稳定可靠的 CDN 服务。
+                    </p>
+                </div>
+                <div class="col-lg-2 col-lg-offset-1">
+                    <h4>合作站点</h4>
+                    <ul>
+                        <li><a href="http://www.hcharts.cn" target="_blank">Highcharts 中文网</a></li>
+                        <li><a href="http://highcharts.me" target="_blank">Highcharts 中文社区</a></li>
+                        <li><a href="http://www.52wulian.cn" target="_blank">我爱物联网</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="http://weibo.com/highcharts" target="_blank">新浪微博</a></li>
+                        <li><a href="mailto:hi@hcharts.cn" target="_blank">电子邮箱</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4>CDN 赞助商</h4>
+                    <a href="https://www.qiniu.com/" style="border-bottom:none;" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-qiniu.com', 'qiuniu.com']);"><img src="http://assets.qiniu.com/qiniu-122x65.png" alt="七牛云存储"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p> Copyright &copy; 2013 - 2015 <a href="http://www.hcharts.cn">Highcharts中文网</a>, <a href="http://www.miitbeian.gov.cn/" target="_blank">闽ICP备14003466号-1</a>, All Rights Reserved.</p>
+    </footer>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+    <script src="../bower_components/underscore/underscore-min.js"></script>
+    <script src="../static/cdn/bower.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c98d038816b0ab3e77aa7c4d6070de9b";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+
+</html>
