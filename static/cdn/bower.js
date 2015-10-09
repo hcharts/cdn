@@ -2,35 +2,67 @@ var app = new Vue({
     el: '#app',
     data: {
         devDependencies: [],
-        main: [],
-        active: null,
+        active: {
+            name: null,
+            main: [],
+            description: null,
+            homepage: null,
+            license: null,
+            version: null
+        },
         s: null,
         searchResult: [],
         searchResultShow: 'none'
     },
     methods: {
-        showDetail: function(name) {
+        showDetail: function(name, version) {
             var self = this;
             $.getJSON('../bower_components/' + name + '/bower.json', function(data) {
-                self.main = [];
-                self.active = name;
+                self.active.main = [];
+                self.active.name = name;
+                self.s = name;
+
                 if (typeof data.main === "string") {
-                    self.main.push(data.main)
+                    self.active.main.push(data.main)
                 } else {
-                    self.main = data.main;
+                    self.active.main = data.main;
                 }
+                self.active.version = version.replace('~', '');
+                self.active.description = data.description;
+                self.active.homepage = data.homepage;
+                self.active.license = data.license;
             });
         },
-        select: function(name)  {
-            this.active = name;
-            if(this.searchResultShow==='block') {
+        select: function(name, version) {
+            this.showDetail(name, version);
+            if (this.searchResultShow === 'block') {
                 this.searchResultShow = 'none';
             }
         },
         inputBlur: function() {
             setTimeout(function() {
                 this.searchResultShow = 'none';
-            },500);
+            }, 500);
+        },
+
+        checkUpdate: function() {
+            var $btn = $('#checkUpdate').button('loading');
+            var self = this;
+            $.ajax({
+                url: 'index.php',
+                type: 'post',
+                data: {
+                    name: self.active.name,
+                    version: self.active.version,
+                    action: 'checkupdate'
+                },
+                // dataType: 'json',
+                success: function(data) {
+                    $btn.button('reset');
+                }
+            });
+
+            //$btn.button('reset')
         },
         search: function() {
             // var self = this;
@@ -51,7 +83,8 @@ $.getJSON('../bower.json', function(data) {
     _.each(data.devDependencies, function(v, k) {
         var t = {};
         t.name = k;
-        t.version = v.replace('~', '');
+        t.version = v;
+        // t.version = v.replace('~', '');
         t.install = true;
         temp.push(t);
     });

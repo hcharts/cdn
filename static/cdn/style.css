@@ -106,6 +106,10 @@ h3>a:hover {
     border-bottom: 1px solid #000;
 }
 
+li {
+    line-height: 1.5;
+}
+
 .table-content h4 {
     margin: 20px 0;
     padding: 10px 0;
@@ -269,4 +273,11 @@ article {
     width: 100%;
     border: none;
     background: none;
+}
+
+#checkUpdate {
+    font-size: 12px;
+    float: right;
+    position: relative;
+    top:-10px;
 }

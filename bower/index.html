@@ -36,23 +36,28 @@
                     <input type="text" v-model="s" v-on="focus: searchResultShow = 'block', blur: inputBlur" class="form-control" placeholder="搜索或安装包">
                     <div class="drilldown" style="display: {{searchResultShow}}">
                         <ul>
-                            <li v-repeat="searchResult" v-on="click: select(name)">{{name}} {{version}}</li>
+                            <li v-repeat="searchResult" v-on="click: select(name, version)">{{name}} {{version}}</li>
                         </ul>
                     </div>
                     </span>
                     <button class="btn btn-default" v-on="click: search"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;搜索</button>
-                    
+
                 </div>
                 <h3>已安装的包</h3>
                 <ul class="installed col-lg-5">
-                    <li v-repeat="devDependencies" v-on="click: showDetail($key)" v-attr="class: $key===active ? 'active' : ''">{{$key}}</li>
+                    <li v-repeat="devDependencies" v-on="click: showDetail($key, $value)" v-attr="class: $key===active.name ? 'active' : ''">{{$key}}</li>
                 </ul>
                 <div class="col-lg-7 detail">
-                    <h4>详细信息</h4>
+                    <h4>{{active.name}} {{active.version}} <button type="button" id="checkUpdate" data-loading-text="Loading..." class="btn btn-success btn-sm" autocomplete="off" v-on="click: checkUpdate">检查更新</button></h4>
+                    <ul>
+                        <li>Description: {{active.description}}</li>
+                        <li>Homepage: {{active.homepage}}</li>
+                        <li>License: {{active.license}}</li>
+                    </ul>
                     <p>主文件：</p>
                     <ul>
-                        <li v-repeat="main">
-                            <input value="http://cdn.hcharts.cn/bower_compoents/{{active}}/{{$value}}" readonly onclick="this.select()">
+                        <li v-repeat="active.main">
+                            <input value="http://cdn.hcharts.cn/bower_compoents/{{active.name}}/{{$value}}" readonly onclick="this.select()">
                         </li>
                     </ul>
                 </div>
