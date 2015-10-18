@@ -17,5 +17,11 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "vue": "~0.12.16"
+  }
 }
