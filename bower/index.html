@@ -36,12 +36,13 @@
                     <input type="text" v-model="s" v-on="focus: searchResultShow = 'block', blur: inputBlur" class="form-control" placeholder="搜索或安装包">
                     <div class="drilldown" style="display: {{searchResultShow}}">
                         <ul>
+                            <li v-text="message"></li>
                             <li v-repeat="searchResult" v-on="click: select(name, version)">{{name}} {{version}}</li>
                         </ul>
                     </div>
                     </span>
                     <button class="btn btn-default" v-on="click: search"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;搜索</button>
-
+                    <!-- <p v-text="message"></p> -->
                 </div>
                 <h3>已安装的包</h3>
                 <ul class="installed col-lg-5">

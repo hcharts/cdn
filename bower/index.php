@@ -20,7 +20,15 @@
     // 搜索
     if($action === 'search') {
       $name = $_POST['name'];
-      return;
+      exec('bower search '.$name, $res, $status);
+      $length=count($res);
+      // for($i=0;$i<$length;$i++) {
+        // echo $res[$i];
+      // }
+
+      // var_dump($res);
+      echo json_encode($res);
+      return ;
     }
   }
   echo "failure";

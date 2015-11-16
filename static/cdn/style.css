@@ -2,6 +2,34 @@ body {
     background: #ECECEC
 }
 
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width:500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+}
+
 header {
     padding: 2em 0;
     background: #006CEE;
@@ -211,7 +239,7 @@ article {
     border: 1px solid #66afe9;
     border-top: none;
     max-height: 300px;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 .article-header .drilldown ul {
@@ -279,5 +307,5 @@ article {
     font-size: 12px;
     float: right;
     position: relative;
-    top:-10px;
+    top: -10px;
 }

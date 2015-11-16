@@ -11,6 +11,7 @@ var app = new Vue({
             version: null
         },
         s: null,
+        message: null,
         searchResult: [],
         searchResultShow: 'none'
     },
@@ -56,7 +57,6 @@ var app = new Vue({
                     version: self.active.version,
                     action: 'checkupdate'
                 },
-                // dataType: 'json',
                 success: function(data) {
                     $btn.button('reset');
                 }
@@ -65,14 +65,58 @@ var app = new Vue({
             //$btn.button('reset')
         },
         search: function() {
-            // var self = this;
-            // var fined = _.find(this.devDependencies, function(v, k) {
-            //     return k === self.s;
-            // });
+            var _this = this;
+            if (_this.s !== null) {
+                // var search = _.filter(_this.devDependencies, function(v, k) {
+                //     console.log(v + ' ' + k);
+                //     return k.indexOf(_this.s) !== -1;
+                // });
+                var search = [];
+                _.each(_this.devDependencies, function(v, k) {
+                    if(k.indexOf(_this.s)!==-1) {
+                        search.push({
+                            name: k,
+                            version: v
+                        });
+                    }
+                });
+                if (search.length === 1) {
+                    _this.select(search[0].name, search[0].version);
+                } else if (search.length === 0) {
+                    _this.searchResult = [];
+                    _this.message = '暂无搜索结果，在线搜索中...';
+                    // 在线搜索
+                    //
+                    $.ajax({
+                        url: 'index.php',
+                        type: 'post',
+                        data: {
+                            name: _this.s,
+                            action: 'search'
+                        },
+                        success: function(data) {
+                            var result = [];
+                            _.each(data, function(d, i) {
 
-            // if(fined) {
-            //     this.active = fined;
-            // }
+                                if(i===0) return;
+                                var kv = d.split("\ ");
+                                console.log(kv);
+                                var obj = {};
+                                obj[kv[0]] = kv[1];
+
+                                result.push(obj);
+                            });
+
+                            console.log(result);
+                            _this.searchResult = data;
+                        }
+                    });
+                } else {
+                    _this.searchResult = search;
+
+                }
+            }
+
         }
     }
 });
