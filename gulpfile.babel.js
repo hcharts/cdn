@@ -64,7 +64,7 @@ gulp.task('html', ['styles', 'images', 'fonts'], () => {
         })))
         .pipe(assets.restore())
         .pipe($.useref())
-        // .pipe($.if('app/*.html', $.minifyHtml({conditionals: true, loose: true})))
+        .pipe($.if('app/*.html', $.minifyHtml({conditionals: true, loose: true})))
         .pipe(gulp.dest(''));
 });
 
@@ -109,7 +109,7 @@ gulp.task('fonts', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', '*.html', 'static/cdn/**']));
 
-gulp.task('serve', ['styles'], () => {
+gulp.task('serve', ['styles', 'html'], () => {
   browserSync({
     notify: false,
     port: 9000,
