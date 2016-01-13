@@ -3,13 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>关于 | 开放CDN服务</title>
+    <title>Bower 包管理 | 开放CDN服务</title>
     <meta name="keywords" content="Highcharts, highcharts cdn, Highcharts中文网 CDN, 开放 CDN, CDN 服务">
     <meta name="description" content="Highcharts 中文网开放 CDN，国内首个 Highcharts 专用CDN服务 ">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <link rel="stylesheet" href="static/cdn/styles/main.css">
+    <!-- build:css static/cdn/styles/main.css -->
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <!-- endbuild -->
 </head>
 
 <body>
@@ -31,8 +33,8 @@
             <nav>
                 <ul>
                     <li><a href="/index.html" onclick="_hmt.push(['_trackEvent', 'nav', 'click', 'index', 'index']);">首页</a></li>
-                    <li><a href="/bower.html" onclick="_hmt.push(['_trackEvent', 'nav', 'click', 'bower', 'bower']);">Bower 包管理</a></li>
-                    <li><a href="/about.html" class="active" onclick="_hmt.push(['_trackEvent', 'nav', 'click', 'about', 'about']);">关于</a></li>
+                    <li><a href="/bower.html" class="active" onclick="_hmt.push(['_trackEvent', 'nav', 'click', 'bower', 'bower']);">Bower 包管理</a></li>
+                    <li><a href="/about.html" onclick="_hmt.push(['_trackEvent', 'nav', 'click', 'about', 'about']);">关于</a></li>
                 </ul>
             </nav>
         </div>
@@ -40,56 +42,39 @@
     <section>
         <div class="container">
             <article class="row" id="app">
-                <h3>关于</h3>
-                <p>开放 CDN 服务是由 Highcharts 中文网提供的国内首个 Highcharts 专用CDN服务，致力于为 Highcharts、 Highstock、Highmaps、jQuery 等和 Highcharts 相关的项目提供稳定、快速的免费 CDN 服务，开放 CDN 所有文件一直保持和官方同步。</p>
-                <p>
-                  自 2013 年 10 月上线以来已经为上千个网站、应用、项目提供了稳定可靠的 CDN 服务。
-                </p>
-
-                <p><b>联系我们</b></p>
-                <ul>
-                  <li>新浪微博：<a href="http://weibo.com/highcharts" target="_blank">@Highcharts中文网</a></li>
-                  <li>电子邮箱：<a href="mailto:hi@hcharts.cn">hi@hcharts.cn</a></li>
-                  <li>意见建议：<a href="http://bbs.hcharts.cn/forum.php?mod=forumdisplay&fid=51&filter=typeid&typeid=26">请到我们的社区发帖</a></li>
-                  <li>微信公众号：
-                      <br>
-                      <img src="http://cdn.hcharts.cn/static/common/social/weixin_200x200.jpg" alt="" data-bd-imgshare-binded="1">
-                  </li>
+                <div class="article-header">
+                    <h1>基于 Bower 的包管理</h1>
+                    <p>基于 Bower 的前端包管理工具，可以方便的搜索或安装需要的前端包资源</p>
+                    <span class="input-warpper">
+                    <input type="text" v-model="s" v-on="focus: searchResultShow = 'block', blur: inputBlur" class="form-control" placeholder="搜索或安装包">
+                    <div class="drilldown" style="display: {{searchResultShow}}">
+                        <ul>
+                            <li v-text="message"></li>
+                            <li v-repeat="searchResult" v-on="click: select(name, version)">{{name}} {{version}}</li>
+                        </ul>
+                    </div>
+                    </span>
+                    <button class="btn btn-default" v-on="click: search"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;搜索</button>
+                    <!-- <p v-text="message"></p> -->
+                </div>
+                <h3>已安装的包</h3>
+                <ul class="installed col-lg-5">
+                    <li v-repeat="devDependencies" v-on="click: showDetail($key, $value)" v-attr="class: $key===active.name ? 'active' : ''">{{$key}}</li>
                 </ul>
-                <h4>更多信息</h4>
-                <h5>Github 开源</h5>
-                <ul>
-                  <li>开源项目：<a href="https://github.com/hcharts/cdn" target="_blank">https://github.com/hcharts/cdn</a></li>
-                </ul>
-                <h5>使用技术</h5>
-                <ul>
-                    <li>Nodejs  （开发平台）</li>
-                    <li>gulp + bower + yeomen （构建工具）</li>
-                    <li>github （版本控制）</li>
-                </ul>
-                <h5>依赖库</h5>
-                <ul>
-                    <li><a href="bower.html?s=jquery">jQuery</a></li>
-                    <li><a href="bower.html?s=bootstrap">Bootstrap</a></li>
-                    <li><a href="bower.html?s=underscore">underscore</a></li>
-                    <li><a href="bower.html?s=vue">vue</a></li>
-                </ul>
-
-
-                <h5>更新历史</h5>
-                <ul>
-                    <li>2016-01-10 发布 1.1.0</li>
-                    <li>2015-12-28 增加 Highcharts 4.2.1，Highstock 4.2.1，Highmaps 4.2.1；</li>
-                    <li>2015-12-17 增加 Highcharts 4.2.0，Highstock 4.2.0，Highmaps 4.2.0；</li>
-                    <li>2015-12-09 增加 Highcharts 4.1.10，Highstock 2.1.10，Highmaps 1.1.10；</li>
-                    <li>2015-10-09 发布 1.0.0，开放 CDN 迁移到七牛云存储</li>
-                    <li>2015-10-08 增加 Highcharts 4.1.9，Highstock 2.1.9，Highmaps 1.1.9；</li>
-                    <li>2015-08-24 增加 Highcharts 4.1.8，Highstock 2.1.8，Highmaps 1.1.8；</li>
-                    <li>2015-06-29 增加 Highcharts 4.1.7，Highstock 2.1.7，Highmaps 1.1.7；</li>
-                    <li>2015-06-13 增加 Highcharts 4.1.6，Highstock 2.1.6，Highmaps 1.1.6；</li>
-                    <li>2014-03-01 发布 0.1.0，开发 CDN 商用阿里云服务，开启真正的 CDN 服务</li>
-                    <li>2013-10-09 发布 0.0.1</li>
-                </ul>
+                <div class="col-lg-7 detail">
+                    <h4>{{active.name}} {{active.version}} <button type="button" id="checkUpdate" data-loading-text="Loading..." class="btn btn-success btn-sm" autocomplete="off" v-on="click: checkUpdate">检查更新</button></h4>
+                    <ul>
+                        <li>Description: {{active.description}}</li>
+                        <li>Homepage: {{active.homepage}}</li>
+                        <li>License: {{active.license}}</li>
+                    </ul>
+                    <p>主文件：</p>
+                    <ul>
+                        <li v-repeat="active.main">
+                            <input value="http://cdn.hcharts.cn/libs/{{active.name}}/{{$value}}" readonly onclick="this.select()">
+                        </li>
+                    </ul>
+                </div>
             </article>
         </div>
     </section>
@@ -131,7 +116,22 @@
     </footer>
 
 
-  <script src="static/cdn/scripts/libs.js"></script>
+<!-- build:js static/cdn/scripts/libs.js -->
+  <!-- bower:js -->
+  <script src="/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/libs/underscore/underscore-min.js"></script>
+  <script src="/libs/vue/dist/vue.min.js"></script>
+  <script src="scripts/common.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js static/cdn/scripts/bower.js -->
+  <!-- bower:js -->
+  <script src="scripts/bower.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
 </body>
 
 </html>

@@ -18,13 +18,13 @@ var app = new Vue({
     methods: {
         showDetail: function(name, version) {
             var self = this;
-            $.getJSON('../bower_components/' + name + '/bower.json', function(data) {
+            $.getJSON('../libs/' + name + '/bower.json', function(data) {
                 self.active.main = [];
                 self.active.name = name;
                 self.s = name;
 
-                if (typeof data.main === "string") {
-                    self.active.main.push(data.main)
+                if (typeof data.main === 'string') {
+                    self.active.main.push(data.main);
                 } else {
                     self.active.main = data.main;
                 }
@@ -58,6 +58,7 @@ var app = new Vue({
                     action: 'checkupdate'
                 },
                 success: function(data) {
+                    console.log(data);
                     $btn.button('reset');
                 }
             });
@@ -67,10 +68,6 @@ var app = new Vue({
         search: function() {
             var _this = this;
             if (_this.s !== null) {
-                // var search = _.filter(_this.devDependencies, function(v, k) {
-                //     console.log(v + ' ' + k);
-                //     return k.indexOf(_this.s) !== -1;
-                // });
                 var search = [];
                 _.each(_this.devDependencies, function(v, k) {
                     if(k.indexOf(_this.s)!==-1) {
@@ -84,8 +81,8 @@ var app = new Vue({
                     _this.select(search[0].name, search[0].version);
                 } else if (search.length === 0) {
                     _this.searchResult = [];
-                    _this.message = '暂无搜索结果，在线搜索中...';
-                    // 在线搜索
+                    _this.message = '鏆傛棤鎼滅储缁撴灉锛屽湪绾挎悳绱腑...';
+                    // 鍦ㄧ嚎鎼滅储
                     //
                     $.ajax({
                         url: 'index.php',
@@ -98,9 +95,10 @@ var app = new Vue({
                             var result = [];
                             _.each(data, function(d, i) {
 
-                                if(i===0) return;
-                                var kv = d.split("\ ");
-                                console.log(kv);
+                                if(i===0) {
+                                  return false;
+                                }
+                                var kv = d.split('\ ');
                                 var obj = {};
                                 obj[kv[0]] = kv[1];
 
@@ -121,7 +119,7 @@ var app = new Vue({
     }
 });
 
-$.getJSON('../bower.json', function(data) {
+$.getJSON('/bower.json', function(data) {
     app.devDependencies = data.devDependencies;
     var temp = [];
     _.each(data.devDependencies, function(v, k) {
@@ -134,6 +132,6 @@ $.getJSON('../bower.json', function(data) {
     });
     app.searchResult = temp;
     setTimeout(function() {
-        jQuery(".installed").find('li')[0].click();
+        jQuery('.installed').find('li')[0].click();
     }, 500);
 });

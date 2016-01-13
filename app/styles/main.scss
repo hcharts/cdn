@@ -1,9 +1,11 @@
+@import "libs/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
 body {
-    background: #ECECEC
+    background: #ECECEC;
 }
 
 .github-corner:hover .octo-arm {
-    animation: octocat-wave 560ms ease-in-out
+    animation: octocat-wave 560ms ease-in-out;
 }
 
 @keyframes octocat-wave {
@@ -30,6 +32,14 @@ body {
     }
 }
 
+// hide slogan while viewpoint is to small
+@media screen and (max-width: 800px) {
+  header .slogan {
+      display: none;
+  }
+}
+
+
 header {
     padding: 2em 0;
     background: #006CEE;
@@ -38,9 +48,14 @@ header {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
+header h1 {
+  display: none;
+}
+
 header img {
     display: inline-block;
 }
+
 
 header .slogan {
     font-size: 0.9em;
@@ -55,7 +70,6 @@ header nav {
     top: 10px;
 }
 
-header nav ul {}
 
 header nav li {
     display: inline-block;

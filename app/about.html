@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <link rel="stylesheet" href="static/cdn/styles/main.css">
+    <!-- build:css static/cdn/styles/main.css -->
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <!-- endbuild -->
 </head>
 
 <body>
@@ -131,7 +133,15 @@
     </footer>
 
 
-  <script src="static/cdn/scripts/libs.js"></script>
+  <!-- build:js static/cdn/scripts/libs.js -->
+  <!-- bower:js -->
+  <script src="/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/libs/underscore/underscore-min.js"></script>
+  <script src="/libs/vue/dist/vue.min.js"></script>
+  <script src="scripts/common.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 </body>
 
 </html>
