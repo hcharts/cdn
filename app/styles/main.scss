@@ -1,7 +1,7 @@
 @import "libs/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-
 body {
     background: #ECECEC;
+    font-family: "Helvetica", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
 }
 
 .github-corner:hover .octo-arm {
@@ -34,11 +34,10 @@ body {
 
 // hide slogan while viewpoint is to small
 @media screen and (max-width: 800px) {
-  header .slogan {
-      display: none;
-  }
+    header .slogan {
+        display: none;
+    }
 }
-
 
 header {
     padding: 2em 0;
@@ -46,49 +45,40 @@ header {
     color: #fff;
     min-width: 650px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  display: none;
-}
-
-header img {
-    display: inline-block;
-}
-
-
-header .slogan {
-    font-size: 0.9em;
-    position: relative;
-    top: 6px;
-}
-
-header nav {
-    display: inline-block;
-    float: right;
-    position: relative;
-    top: 10px;
-}
-
-
-header nav li {
-    display: inline-block;
-    /*margin: 0 20px;*/
-}
-
-header nav li a {
-    color: #fff;
-    display: block;
-    padding: 6px 10px;
-    border: 1px solid #006CEE;
-}
-
-header nav a.active,
-header nav a:hover {
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid #fff;
-    border-radius: 3px;
+    h1 {
+        display: none;
+    }
+    img {
+        display: inline-block;
+    }
+    .slogan {
+        font-size: 0.9em;
+        position: relative;
+        top: 6px;
+    }
+    nav {
+        display: inline-block;
+        float: right;
+        position: relative;
+        top: 10px;
+    }
+    nav li {
+        display: inline-block;
+        /*margin: 0 20px;*/
+    }
+    nav li a {
+        color: #fff;
+        display: block;
+        padding: 6px 10px;
+        border: 1px solid #006CEE;
+    }
+    nav a.active,
+    nav a:hover {
+        color: #fff;
+        text-decoration: none;
+        border: 1px solid #fff;
+        border-radius: 3px;
+    }
 }
 
 blockquote {
@@ -173,54 +163,49 @@ li {
 }
 
 .subfooter {
-    background-color: #2D2D2D;
+    background-color: #232736;
     color: #fff;
     padding: 30px 0;
     min-width: 650px;
     margin-bottom: 0;
-}
-
-.subfooter h4 {
-    margin: 20px 0;
-    padding: 0;
-    border-bottom: none;
-}
-
-.subfooter ul {
-    padding-left: 0;
-    list-style: none;
-}
-
-.subfooter a {
-    color: #fff;
-    border-bottom: 1px dotted #999;
-}
-
-.subfooter a:hover {
-    text-decoration: none;
-    border-bottom: 1px solid #fff;
+    h4 {
+        margin: 20px 0;
+        padding: 0;
+        border-bottom: none;
+    }
+    ul {
+        padding-left: 0;
+        list-style: none;
+    }
+    a {
+        color: #fff;
+        border-bottom: 1px dotted #999;
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px solid #fff;
+        }
+    }
 }
 
 footer {
-    padding: 20px 0;
-    background: #000;
+    padding: 14px 0;
+    font-size: 12px;
+    background: #232736;
     color: #fff;
     min-width: 650px;
-}
-
-footer p {
-    text-align: center;
-    margin-bottom: 0;
-}
-
-footer a {
-    color: #fff;
-}
-
-footer a:hover {
-    color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid #fff;
+    p {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    a {
+        color: #fff;
+        &:hover,
+        &:focus {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #fff;
+        }
+    }
 }
 
 article {
