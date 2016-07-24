@@ -23,6 +23,15 @@
     "bootstrap": "~3.3.5",
     "jquery": "~2.1.4",
     "underscore": "~1.8.3",
-    "vue": "~0.12.16"
+    "vue": "vuejs/vue#^1.0.24",
+    "moment": "~2.11.1",
+    "font-awesome": "fontawesome#~4.5.0",
+    "d3": "~3.5.12",
+    "echarts": "~3.0.0",
+    "codemirror": "~5.10.0",
+    "Swiper": "swiper#~3.3.0",
+    "jspdf": "~1.1.135",
+    "highcharts-export-csv": "hcharts/export-csv",
+    "lodash": "lodash/lodash#^4.13.1"
   }
 }

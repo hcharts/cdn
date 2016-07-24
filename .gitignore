@@ -4,3 +4,6 @@
 /libs/**
 **/.svn/**
 .tmp/**
+/zips
+.qrsignore
+/static
